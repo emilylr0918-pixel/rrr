@@ -56,7 +56,7 @@ jobs:
           sudo apt-get install -y ffmpeg
 
       - name: Run bot
-        run: python main.py
+        run: python jj.py
 
       - name: Save bot data to storage branch
         if: always()
@@ -65,9 +65,7 @@ jobs:
           git checkout bot-data-storage 2>/dev/null || git checkout -b bot-data-storage
           git rm -rf . 2>/dev/null || true
           git add --all
-          git reset -- FINAL/
-          git reset -- main.py
-          git reset -- data.py
+          git reset -- jj.py
           git commit -m "🤖 Auto-update bot data - $(date +'%Y-%m-%d %H:%M:%S')" || echo "لا توجد تغييرات للحفظ"
           git push origin bot-data-storage --force || echo "فشل في رفع البيانات"
           git checkout main
